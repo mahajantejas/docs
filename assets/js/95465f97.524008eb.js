@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[6149],{2057:l=>{l.exports=JSON.parse('{"label":"hola","permalink":"/glific/blog/tags/hola","allTagsPath":"/glific/blog/tags","count":1}')}}]);
