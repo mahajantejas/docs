@@ -1,0 +1,143 @@
+{
+  "interactive_templates": [],
+  "flows": [
+    {
+      "keywords": ["daterange"],
+      "definition": {
+        "vars": ["e6ca65a6-877d-483f-94e4-621b72292aeb"],
+        "uuid": "e6ca65a6-877d-483f-94e4-621b72292aeb",
+        "type": "messaging",
+        "spec_version": "13.2.0",
+        "nodes": [
+          {
+            "uuid": "6fb106b6-8875-4741-bb15-2745ab5e5f24",
+            "exits": [
+              {
+                "uuid": "52ee633e-43b1-4efc-b16e-e06b73c4dbe4",
+                "destination_uuid": "57cf9711-b44d-4978-9fd6-96fdce287db7"
+              }
+            ],
+            "actions": [
+              {
+                "uuid": "f6dd8531-2a43-476b-b401-2e64cc76f158",
+                "type": "send_msg",
+                "text": "Enter Date",
+                "quick_replies": [],
+                "labels": [],
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "uuid": "57cf9711-b44d-4978-9fd6-96fdce287db7",
+            "router": {
+              "wait": { "type": "msg" },
+              "type": "switch",
+              "result_name": "datevalidator",
+              "operand": "@input.text",
+              "default_category_uuid": "d0e43fed-b09a-45da-8397-576dad63fd21",
+              "categories": [
+                {
+                  "uuid": "19db26d3-5d63-4fa9-bf26-11389c74fe2b",
+                  "name": "correct format",
+                  "exit_uuid": "4a2c1319-eed7-4b92-b9be-fc1f001fdb54"
+                },
+                {
+                  "uuid": "d0e43fed-b09a-45da-8397-576dad63fd21",
+                  "name": "Other",
+                  "exit_uuid": "3bae5e8b-12f2-4eec-ba6d-fd2e239c6a2d"
+                }
+              ],
+              "cases": [
+                {
+                  "uuid": "2441b3be-531b-4f74-ba10-d9a243c0d269",
+                  "type": "has_pattern",
+                  "category_uuid": "19db26d3-5d63-4fa9-bf26-11389c74fe2b",
+                  "arguments": [
+                    "^(0[1-9]|1\\d|2\\d|3[01])/(0[1-9]|1[012])/\\d{4}$"
+                  ]
+                }
+              ]
+            },
+            "exits": [
+              {
+                "uuid": "4a2c1319-eed7-4b92-b9be-fc1f001fdb54",
+                "destination_uuid": "bce3b7f6-17c4-4e12-bcbd-a437fee4eccd"
+              },
+              {
+                "uuid": "3bae5e8b-12f2-4eec-ba6d-fd2e239c6a2d",
+                "destination_uuid": "0a678a1f-2cd1-4de9-8946-76eae3e42b6f"
+              }
+            ],
+            "actions": []
+          },
+          {
+            "uuid": "bce3b7f6-17c4-4e12-bcbd-a437fee4eccd",
+            "exits": [
+              {
+                "uuid": "5519d139-3cb9-4f23-8386-d82edaa2d726",
+                "destination_uuid": null
+              }
+            ],
+            "actions": [
+              {
+                "uuid": "e30ed117-5a86-4a03-9982-ddd324d6bb4e",
+                "type": "send_msg",
+                "text": "Correct",
+                "quick_replies": [],
+                "labels": [],
+                "attachments": []
+              }
+            ]
+          },
+          {
+            "uuid": "0a678a1f-2cd1-4de9-8946-76eae3e42b6f",
+            "exits": [
+              {
+                "uuid": "af3e91d0-b155-4fa4-ad68-d8c13e8ba6da",
+                "destination_uuid": null
+              }
+            ],
+            "actions": [
+              {
+                "uuid": "c0064e86-42f2-4429-b37c-4c9e29116289",
+                "type": "send_msg",
+                "text": "Incorrect",
+                "quick_replies": [],
+                "labels": [],
+                "attachments": []
+              }
+            ]
+          }
+        ],
+        "name": "daterange",
+        "localization": {},
+        "language": "base",
+        "expire_after_minutes": 10080,
+        "_ui": {
+          "nodes": {
+            "bce3b7f6-17c4-4e12-bcbd-a437fee4eccd": {
+              "type": "execute_actions",
+              "position": { "top": 420, "left": 140 }
+            },
+            "6fb106b6-8875-4741-bb15-2745ab5e5f24": {
+              "type": "execute_actions",
+              "position": { "top": 0, "left": 0 }
+            },
+            "57cf9711-b44d-4978-9fd6-96fdce287db7": {
+              "type": "wait_for_response",
+              "position": { "top": 220, "left": 240 },
+              "config": { "cases": {} }
+            },
+            "0a678a1f-2cd1-4de9-8946-76eae3e42b6f": {
+              "type": "execute_actions",
+              "position": { "top": 480, "left": 420 }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "contact_field": [],
+  "collections": []
+}
